@@ -1,0 +1,5 @@
+# [START runtime]
+runtime: custom
+env: flex
+entrypoint: gunicorn -b :$PORT marker_detection.wsgi
+# [END runtime]

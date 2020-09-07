@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Stream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bootstrap/js/sb-admin-2.js' %}"></script>
+   
+</head>
+
+<body>
+    <div id="wrapper" >
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark" id="accordionSidebar">
+              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+                  <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                  </div>
+                  <div class="sidebar-brand-text mx-3">Marker detection</div>
+                </a>              
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'setting' %}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Setting</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'history' %}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>History</span></a>
+                </li>
+              <hr class="sidebar-divider d-none d-md-block">           
+          </ul>
+              
+        
+          <div id="content-wrapper" class="d-flex flex-column">
+              <div id="content">
+                  <div class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                      
+                    
+                    <button class="btn btn-primary"  onclick="Online()" >Online</button>
+                    <button class="btn btn-secondary ml-2" onclick="Offline()" >Offline</button>
+                    <button class="btn btn-primary ml-4"  onclick="ResetCounter()" >Reset counter</button>
+                  </div>
+                  
+                  <div class="container-fluid">
+                    <div class="row"> 
+                    <div class="column" >
+                            <div class="card shadow mb-2" >
+                              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                Inspection setting                 
+                              </div>
+                              <div class="card-body">
+                                  <form action="#" onsubmit="change_parameter();return false"   >
+                                      <div  >
+                                      <label class="label_style" class="row" for="team_name" >Vertical Difference</label>
+                                      <input  id="vertical_name" type="number" class="row ml-1" style="width: 60px; text-align:center"  name="vertical_field" value="{{ vertical_diff_param }}"> 
+                                      </div>
+                              
+                                      <div >
+                                      <label class="label_style" for="team_name" >Horizontal Difference</label>
+                                      
+                                      <input  id="horizontal_name" type="number" class="row ml-1" style="width: 60px;text-align: center;"  name="horizontal_field" value="{{ horizontal_diff_param }}">
+                                      </div>
+                                  
+                                      <input type="submit" class="btn btn-primary  mt-3" value="Set parameter" >
+                                  </form>
+                              </div>
+                            </div>      
+                          </div>
+                      <div class="column" >
+                        <div class="card shadow mb-2 ml-2" >
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            Current image                 
+                          </div>
+                          <div class="card-body">
+                            <img src="{% url 'video-feed' %}" width="600px" alt="">
+                          </div>
+                        </div>      
+                      </div>
+                      <div class="column" >
+                        <div class="card shadow mb-2 ml-2" >
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            Lastest defect                 
+                          </div>
+                          <div class="card-body">
+                            <img src="{% url 'video-feed-defect' %}"  width="600px" alt="">
+                          </div>
+                        </div>      
+                      </div>
+                     
+                    </div>
+                      <div class="row">
+                        
+                      </div>
+                  </div>
+              </div>
+              
+              <footer class="sticky-footer bg-white">
+                  <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                      <span>Copyright © Your Website 2019</span>
+                    </div>
+                  </div>
+              </footer>
+          </div>
+      </div>
+
+
+
+</body>
+{% load static %}
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="{% static 'main_script.js' %}"></script>
+</html>

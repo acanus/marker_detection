@@ -1,0 +1,1 @@
+{"vertical_diff": 4, "horizontal_diff": 11, "is_record": false, "max_record": 5, "record_path": "webcam/record"}

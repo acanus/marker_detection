@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en" > 
+    
+<head>
+  {% load static %}
+    <meta charset="UTF-8">
+    <title>Stream</title>
+    <style>    
+            .container canvas {
+               
+                display:block;
+                height: auto;
+            }
+            .template {
+                width: 300px;
+                margin-top: 10px;
+            }
+
+            .template img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }         
+    </style>
+    <link href="bootstrap/vendor/fontawesome-free/css/all.min.css' " rel="stylesheet" type="text/css">
+    <link href="bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="bootstrap/js/sb-admin-2.js"></script>
+
+    <link href="{% static 'bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bootstrap/js/sb-admin-2.js' %}"></script>
+</head>
+<body onload="rectangle()"> 
+
+  <div id="wrapper" >
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark" id="accordionSidebar">
+          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home' %}">
+              <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+              </div>
+              <div class="sidebar-brand-text mx-3">Marker detection</div>
+            </a>              
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'setting' %}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Setting</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'history' %}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>History</span></a>
+            </li>
+          <hr class="sidebar-divider d-none d-md-block">           
+      </ul>
+          
+    
+      <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+              <div class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                  
+                <button class="btn btn-primary"   onclick="setcurrentastemplate()">Capture current template</button>
+                
+              </div>
+              
+              <div class="container-fluid">
+                <div class="row"> 
+                  <div class="column" >
+                    <div class="card shadow mb-2" >
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        Template image                 
+                      </div>
+                      <div class="card-body">
+                        <div class="container">
+                          <canvas  id="paint"  style="border: 2px solid #555555;" width="300" height="300"></canvas>
+                        </div>
+                      </div>
+                    </div>      
+                  </div>
+                  <div class="column" >
+                    <div class="card shadow mb-2 ml-2" >
+                      <div class="card-header py-2 d-flex flex-row align-items-center justify-content-between">
+                        Cropped template image   
+                        <button   class="btn btn-primary"  style="float: right;"  onclick="ChangeTemplate()">Set template</button>               
+                      </div>
+                      <div class="card-body">
+                        <div class="container">
+                          <div class="template" id="canvas_container" > 
+                            <img id="image_template" minwidth=200 minheight=200  src="{% url 'template_image_cropped' %}" style="border: 2px solid #6e6e6e;"></img> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>      
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="column" >
+                      <div class="card shadow mb-2" >
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          Record setting                 
+                        </div>
+                        <div class="card-body">
+                          <div style="display: grid">
+           
+                          <label >Record Defect</label>
+                           <input id="is_record" type="checkbox" style="width: 30px; height: 28px; border-color:  rgb(6, 102, 167); border-style: solid; margin-top: 5px; text-align: center;" name="record_field" >          
+                      
+                         <label style="margin-top: 20px;" >Max record</label>
+                         <input id="max_record"  type="number" style="width: 60px; text-align: center;"  name="record_field" value="5">
+                         <label style="margin-top: 20px;" >Record path</label>
+                         <input id="record_path" type="text" class="pl-2"  name="record_field" value="webcam/record">
+                         <button  class="btn btn-primary mt-2 "  onclick="onsetparameter()"  >Set record parameters</button> 
+                       </div>
+                        </div>
+                      </div>      
+                    </div>
+                  </div>
+              </div>
+          </div>
+          
+          <footer class="sticky-footer bg-white">
+              <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                  <span>Copyright © Your Website 2019</span>
+                </div>
+              </div>
+          </footer>
+      </div>
+  </div>
+  
+</body>
+{% load static %}
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="{% static 'script.js' %}"></script>
+</html>

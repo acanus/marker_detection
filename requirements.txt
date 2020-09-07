@@ -1,0 +1,4 @@
+Django
+matplotlib
+gunicorn
+opencv-python
